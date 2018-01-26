@@ -9,7 +9,7 @@ public class SnapPlug : MonoBehaviour {
 	public SnapPlug OtherSide;
 
 	// the socket this is connected to (only for reading)
-	// todo add some event handling?
+	// TODO: add some event handling?
 	public SnapSocket InSocket
 	{
 		get;
