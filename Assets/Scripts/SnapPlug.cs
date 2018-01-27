@@ -20,5 +20,29 @@ public class SnapPlug : MonoBehaviour {
 	public void SetSocket(SnapSocket socket)
 	{
 		this.InSocket = socket;
+        PlugginAction();
 	}
+
+    private Rigidbody _body;
+
+    private void Awake() {
+        _body = GetComponent<Rigidbody>();
+    }
+    
+    public void PlugginAction() {
+        Debug.Log("plug");
+        //_body.AddForce(InSocket.GetEndPosition() - transform.position);
+        Transform t = InSocket.GetEndTransform();
+
+        _body.MovePosition(t.position);
+        _body.MoveRotation(t.rotation);
+    }
+
+    public void UnplugginAction() {
+        Debug.Log("unplug");
+        //_body.AddForce(InSocket.GetEndPosition() - transform.position);
+        Transform t = InSocket.GetStartTransform();
+
+        _body.MovePosition(t.position);
+    }
 }

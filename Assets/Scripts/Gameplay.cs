@@ -67,7 +67,7 @@ public class Gameplay : MonoBehaviour {
 			return;
 		}
 		var to = FindRandomFreeSocket(from);
-		if(tag == null)
+		if(to == null)
 		{
 			return;
 		}
