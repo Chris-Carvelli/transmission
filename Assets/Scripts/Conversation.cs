@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Conversation : MonoBehaviour {
-
-	public AudioSource From;
-	public AudioSource To;
+	public AudioSource HelloOperator;
+	public SnapSocket FromCaller;
+	public SnapSocket ToCaller;
+	// public float seconds;
 	public AudioSource Talk;
+
+	private bool HasHeard = false;
 
 	void Start ()
 	{
-		FromTo(this.From);
-		FromTo(this.To);
+		FromTo(this.HelloOperator);
 		if(this.Talk != null)
 		{
 			this.Talk.loop = false;
