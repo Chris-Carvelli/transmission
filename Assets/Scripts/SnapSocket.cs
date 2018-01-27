@@ -9,6 +9,42 @@ public class SnapSocket : MonoBehaviour {
 
 	SnapPlug connected_plug_;
 
+    // setup in editor
+    public Blink Light;
+
+    // null no call, playing=solid light, non null, non playing=calling->blinking
+    public Mission CurrentMission;
+
+    public bool HasCallWaiting
+    {
+        get{
+            if(CurrentMission == null) return false;
+            return CurrentMission.IsInConversation == false;
+        }
+    }
+
+    private void UpdateBlinkingLightNotification()
+    {
+        if(this.Light != null) 
+        {
+            if(CurrentMission == null)
+            {
+                // no light
+                this.Light.IsBlinking = false;
+            }
+            else if(CurrentMission.IsInConversation)
+            {
+                // light
+                this.Light.IsBlinking = true;
+            }
+            else
+            {
+                // blink it
+                this.Light.IsBlinking = true;
+            }
+        }
+    }
+
 	// the conencted plug
 	// TODO: add some events?
 	public SnapPlug ConnectedPlug

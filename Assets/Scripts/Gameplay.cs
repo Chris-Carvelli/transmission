@@ -6,12 +6,6 @@ public class Gameplay : MonoBehaviour {
 	// set this in unity editor
 	public Conversation[] Conversations;
 
-	// mission holds a connection request
-	private class Mission
-	{
-		public Conversation conversation;
-	}
-
 	List<Mission> missions = new List<Mission>();
 
 	Conversation FindConversation()
@@ -45,7 +39,7 @@ public class Gameplay : MonoBehaviour {
 			}
 
 			if(m.conversation.ToCaller == socket &&
-				m.conversation.IsInConversation)
+				m.IsInConversation)
 			{
 				return true;
 			}
