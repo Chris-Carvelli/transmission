@@ -31,13 +31,4 @@ public class Conversation : MonoBehaviour {
 	void Update ()
 	{
 	}
-
-	public bool IsInConversation
-	{
-		get
-		{
-			if(this.Talk == null) return false;
-			return this.Talk.isPlaying;
-		}
-	}
 }
