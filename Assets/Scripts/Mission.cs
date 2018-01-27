@@ -21,7 +21,7 @@ public class Mission
 	}
 
 	bool has_been_connected = false;
-	bool active = true;
+	public bool active = true;
 
 	bool isplaying
 	{

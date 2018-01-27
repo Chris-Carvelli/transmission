@@ -7,6 +7,16 @@ public class SnapPlug : MonoBehaviour {
     public GameObject sparkEffect;
     public SnapSocket nearSocket;
 
+    public string Name
+    {
+        get {return gameObject.name;}
+    }
+
+    public override string ToString()
+    {
+        return this.Name;
+    }
+
 	// set in unity editor
 	public SnapPlug OtherSide;
 
@@ -21,6 +31,8 @@ public class SnapPlug : MonoBehaviour {
 	// called from snap socket
 	public void SetSocket(SnapSocket socket)
 	{
+        Debug.Log(string.Format("Connecting plug {0} to socket {1}", this, socket));
+
 		this.InSocket = socket;
         PlugginAction();
 	}

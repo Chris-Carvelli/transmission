@@ -23,6 +23,15 @@ public class SnapSocket : MonoBehaviour {
         }
     }
 
+    public string Name
+    {
+        get {return gameObject.name;}
+    }
+    public override string ToString()
+    {
+        return this.Name;
+    }
+
     private void UpdateBlinkingLightNotification()
     {
         if(this.Light != null) 
@@ -71,6 +80,7 @@ public class SnapSocket : MonoBehaviour {
     public Transform outPos;
 
     private void Update() {
+        this.UpdateBlinkingLightNotification();
         if (Input.GetButtonDown("Fire1")) {
             if (ConnectedPlug != null) //something is connected, unplug it
                 UnsnapPlug();

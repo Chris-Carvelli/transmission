@@ -8,6 +8,24 @@ public class Gameplay : MonoBehaviour {
 
 	List<Mission> missions = new List<Mission>();
 
+	void Update()
+	{
+		List<Mission> toremove = new List<Mission>();
+		foreach(var m in missions)
+		{
+			m.Step(Time.deltaTime);
+			if(!m.active)
+			{
+				toremove.Add(m);
+			}
+		}
+
+		foreach(var m in toremove)
+		{
+			this.missions.Remove(m);
+		}
+	}
+
 	Conversation FindConversation()
 	{
 		List<Conversation> conv = new List<Conversation>();
@@ -64,8 +82,11 @@ public class Gameplay : MonoBehaviour {
 		var conv = FindConversation();
 		if(conv == null)
 		{
+			Debug.Log("Couldnt find conversation");
 			return;
 		}
+
+		Debug.Log("Starting a mission");
 		var m = new Mission();
 		m.conversation = conv;
 		// TODO: start socket blinking and stuff
