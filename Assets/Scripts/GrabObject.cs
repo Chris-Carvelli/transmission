@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GrabObject : MonoBehaviour {
-    public SteamVR_TrackedObject trackedObj;
-    public GameObject collidingObject;
-    public GameObject objectInHand;
+    private SteamVR_TrackedObject trackedObj;
+    private GameObject collidingObject;
+    private GameObject objectInHand;
 
     private SteamVR_Controller.Device Controller {
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
@@ -23,13 +23,13 @@ public class GrabObject : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update() {
         if (Controller.GetHairTriggerDown()) {
             if (collidingObject) {
                 GrabObj();
             }
         }
-        
+
         if (Controller.GetHairTriggerUp()) {
             if (objectInHand) {
                 ReleaseObject();
@@ -49,11 +49,6 @@ public class GrabObject : MonoBehaviour {
 
         if (plug != null)
             plug.UnplugginAction();
-
-        SnapPhone phone = objectInHand.GetComponent<SnapPhone>();
-
-        if (phone != null)
-            phone.UnplugginAction();
     }
 
     private FixedJoint AddFixedJoint() {
@@ -76,14 +71,8 @@ public class GrabObject : MonoBehaviour {
                     if (plug.nearSocket.ConnectedPlug == null) {
                         plug.nearSocket.nearPlug = plug;
                         plug.nearSocket.SnapPlug();
-                    }
-                }
-            }
 
-            SnapPhone phone = objectInHand.GetComponentInChildren<SnapPhone>();
-            if (phone != null) {
-                if (phone.phoneBase != null) {
-                    phone.PlugginAction();
+                    }
                 }
             }
             else {
@@ -99,21 +88,20 @@ public class GrabObject : MonoBehaviour {
         if (other.gameObject.GetComponent<Grabbable>())
             SetCollidingObject(other);
     }
-    
+
     public void OnTriggerStay(Collider other) {
         if (other.gameObject.GetComponent<Grabbable>())
             SetCollidingObject(other);
     }
-    
-    public void OnTriggerExit(Collider other) {
-        if (other.gameObject.GetComponent<Grabbable>())
-        {
-            if (!collidingObject) {
-                return;
-            }
 
-            collidingObject = null;
+    public void OnTriggerExit(Collider other) {
+        if (!other.gameObject.GetComponent<Grabbable>())
+            return;
+
+        if (!collidingObject) {
+            return;
         }
-        
+
+        collidingObject = null;
     }
 }
