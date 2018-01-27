@@ -107,10 +107,13 @@ public class GrabObject : MonoBehaviour {
     
     public void OnTriggerExit(Collider other) {
         if (other.gameObject.GetComponent<Grabbable>())
+        {
             if (!collidingObject) {
-            return;
-        }
+                return;
+            }
 
-        collidingObject = null;
+            collidingObject = null;
+        }
+        
     }
 }

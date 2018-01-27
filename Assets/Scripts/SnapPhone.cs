@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SnapPhone : Grabbable {
-    public GameObject sparkEffect;
-
     public SnapPhoneBase phoneBase;
 
     private Rigidbody _body;
@@ -28,9 +26,6 @@ public class SnapPhone : Grabbable {
 
         _body.useGravity = false;
         
-
-        //sparking
-        Instantiate(sparkEffect).transform.position = transform.position;
     }
 
     public void UnplugginAction() {
