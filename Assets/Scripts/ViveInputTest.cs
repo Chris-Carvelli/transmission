@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ViveInputTest : MonoBehaviour {
+    public ShaderSwitching camera;
     // 1
     private SteamVR_TrackedObject trackedObj;
     // 2

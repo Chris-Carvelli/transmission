@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.PostProcessing;
 
 public class ShaderSwitching : MonoBehaviour {
-	
-	public List<PostProcessingProfile> myPostProcessingProfiles;
+
+    public List<PostProcessingProfile> myPostProcessingProfiles;
 
 	private PostProcessingBehaviour myPostProcessingBehaviour;
 	private int myCurrentIndex;
