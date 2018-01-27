@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Blender MTL File: 'switchboard_mesh.obj'
 # Material Count: 1
 
@@ -10,3 +11,11 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
 illum 2
+=======
+newmtl initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+>>>>>>> d420b8f9c9a2191cd1d07c7e817cb807151337fb
