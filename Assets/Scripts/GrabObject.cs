@@ -49,6 +49,11 @@ public class GrabObject : MonoBehaviour {
 
         if (plug != null)
             plug.UnplugginAction();
+
+        SnapPhone phone = objectInHand.GetComponent<SnapPhone>();
+
+        if (phone != null)
+            phone.UnplugginAction();
     }
 
     private FixedJoint AddFixedJoint() {
@@ -73,6 +78,13 @@ public class GrabObject : MonoBehaviour {
                         plug.nearSocket.SnapPlug();
 
                     }
+                }
+            }
+
+            SnapPhone phone = objectInHand.GetComponentInChildren<SnapPhone>();
+            if (phone != null) {
+                if (phone.phoneBase != null) {
+                    phone.PlugginAction();
                 }
             }
             else {
