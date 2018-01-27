@@ -35,6 +35,7 @@ public class FakeVr : MonoBehaviour {
 
 	void Toggle(SnapSocket socket, SnapPlug plug)
 	{
+		Debug.Log("Toggle");
 		socket.ConnectedPlug = socket.ConnectedPlug == null ? plug : null;
 	}
 }

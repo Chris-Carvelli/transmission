@@ -44,6 +44,7 @@ public class SnapPlug : MonoBehaviour {
     }
     
     public void PlugginAction() {
+        if(_body == null) return;
         Debug.Log("plug");
         //_body.AddForce(InSocket.GetEndPosition() - transform.position);
         Transform t = InSocket.GetEndTransform();

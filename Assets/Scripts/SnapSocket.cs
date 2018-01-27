@@ -65,14 +65,17 @@ public class SnapSocket : MonoBehaviour {
 
 		set
 		{
+            Debug.Log(string.Format("Connect called from {0} to {1}", this, value));
 			if(value && connected_plug_ != null)
 			{
+                Debug.Log(string.Format("Clearing {0}", this));
 				connected_plug_.SetSocket(null);
 			}
 			connected_plug_ = value;
 			if(connected_plug_ != null)
 			{
-				connected_plug_.SetSocket(this);
+                Debug.Log(string.Format("Connected {0}", this));
+                connected_plug_.SetSocket(this);
 			}
 		}
 	}
