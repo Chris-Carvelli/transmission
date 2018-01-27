@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnapPhone : MonoBehaviour {
+public class SnapPhone : Grabbable {
     public GameObject sparkEffect;
 
     public SnapPhoneBase phoneBase;
@@ -13,16 +13,21 @@ public class SnapPhone : MonoBehaviour {
         _body = GetComponent<Rigidbody>();
     }
 
+    private void Start() {
+        PlugginAction();
+    }
+
     public void PlugginAction() {
         //_body.AddForce(InSocket.GetEndPosition() - transform.position);
         Transform t = phoneBase.GetEndTransform();
 
         _body.MovePosition(t.position);
         Quaternion q = t.rotation;
-        q.eulerAngles = new Vector3(0, 0, 270);
+        q.eulerAngles = new Vector3(0, 0, 0);
         _body.MoveRotation(q);
 
         _body.useGravity = false;
+        
 
         //sparking
         Instantiate(sparkEffect).transform.position = transform.position;

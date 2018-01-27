@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GrabObject : MonoBehaviour {
-    private SteamVR_TrackedObject trackedObj;
-    private GameObject collidingObject;
-    private GameObject objectInHand;
+    public SteamVR_TrackedObject trackedObj;
+    public GameObject collidingObject;
+    public GameObject objectInHand;
 
     private SteamVR_Controller.Device Controller {
         get { return SteamVR_Controller.Input((int)trackedObj.index); }
@@ -76,7 +76,6 @@ public class GrabObject : MonoBehaviour {
                     if (plug.nearSocket.ConnectedPlug == null) {
                         plug.nearSocket.nearPlug = plug;
                         plug.nearSocket.SnapPlug();
-
                     }
                 }
             }
@@ -97,15 +96,18 @@ public class GrabObject : MonoBehaviour {
 
 
     public void OnTriggerEnter(Collider other) {
-        SetCollidingObject(other);
+        if (other.gameObject.GetComponent<Grabbable>())
+            SetCollidingObject(other);
     }
     
     public void OnTriggerStay(Collider other) {
-        SetCollidingObject(other);
+        if (other.gameObject.GetComponent<Grabbable>())
+            SetCollidingObject(other);
     }
     
     public void OnTriggerExit(Collider other) {
-        if (!collidingObject) {
+        if (other.gameObject.GetComponent<Grabbable>())
+            if (!collidingObject) {
             return;
         }
 

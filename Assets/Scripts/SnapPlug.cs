@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// plug is inserted into socket
-public class SnapPlug : MonoBehaviour {
+public class SnapPlug : Grabbable {
     public GameObject sparkEffect;
     public SnapSocket nearSocket;
 
