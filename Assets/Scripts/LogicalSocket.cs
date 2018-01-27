@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogicalSocket : MonoBehaviour {
+public class LogicalSocket : MonoBehaviour
+{
 	public string Name
 	{
 		get
@@ -11,11 +12,15 @@ public class LogicalSocket : MonoBehaviour {
 		}
 	}
 
-	public bool IsLightOn
+	void Start()
 	{
-		// TODO: figure out how to we should handle lights.
-		// texture, point light, other?
-		get;
-		set;
+		this.Blinking = this.GetComponent<Blink>();
+	}
+
+	Blink Blinking;
+
+	public bool HasCallWaiting
+	{
+		get { return this.Blinking.IsBlinking; }
 	}
 }

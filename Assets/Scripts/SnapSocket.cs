@@ -43,11 +43,11 @@ public class SnapSocket : MonoBehaviour {
         }
     }
 
-    private void SnapPlug () {
+    public void SnapPlug () {
         ConnectedPlug = nearPlug;
     }
 
-    private void UnsnapPlug() {
+    public void UnsnapPlug() {
         ConnectedPlug.UnplugginAction();
         ConnectedPlug = null;
     }
