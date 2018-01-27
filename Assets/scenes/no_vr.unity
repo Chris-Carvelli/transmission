@@ -225,11 +225,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e0cb469b3df14830a8c52cd4969792a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BlinkInterval: 0.1
+  BlinkInterval: 0.5
   OnObjects:
   - {fileID: 595084267}
   OffObjects:
   - {fileID: 1968153246}
+  Meshes:
+  - {fileID: 1944818640}
+  OnMaterials:
+  - {fileID: 2100000, guid: 0a8e0ab932fe24fc295c1202b09f5399, type: 2}
+  OffMaterial:
+  - {fileID: 2100000, guid: b064d2444bade4ced86aeb4b96fcf725, type: 2}
 --- !u!114 &657078566
 MonoBehaviour:
   m_ObjectHideFlags: 0

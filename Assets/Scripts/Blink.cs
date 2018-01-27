@@ -5,12 +5,17 @@ using UnityEngine;
 public class Blink : MonoBehaviour
 {
 	// how many seconds a light is on/off when blinking
-	public float BlinkInterval = 0.1f;
+	public float BlinkInterval = 0.5f;
 	private float timer = 0;
 
 	// objects to enable and disable
 	public GameObject[] OnObjects;
 	public GameObject[] OffObjects;
+
+	public MeshRenderer[] Meshes;
+	public Material[] OnMaterials;
+	public Material[] OffMaterial;
+
 
 	private bool blink = true;
 	public bool IsBlinking
@@ -56,6 +61,13 @@ public class Blink : MonoBehaviour
 		foreach(var g in this.OffObjects)
 		{
 			g.SetActive(!v);
+		}
+
+		for(int i=0; i<this.Meshes.Length; i+=1)
+		{
+			var m = this.Meshes[i];
+			var o = v ? this.OnMaterials[i] : this.OffMaterial[i];
+			m.material = o;
 		}
 	}
 
