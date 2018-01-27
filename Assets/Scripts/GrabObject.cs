@@ -41,7 +41,9 @@ public class GrabObject : MonoBehaviour {
         objectInHand = collidingObject;
         collidingObject = null;
         var joint = AddFixedJoint();
-        joint.connectedBody = objectInHand.GetComponent<Rigidbody>();
+        Rigidbody body = objectInHand.GetComponent<Rigidbody>();
+        body.useGravity = false;
+        joint.connectedBody = body;
 
         SnapPlug plug = objectInHand.GetComponent<SnapPlug>();
 
@@ -57,6 +59,7 @@ public class GrabObject : MonoBehaviour {
     }
 
     private void ReleaseObject() {
+        objectInHand.GetComponent<Rigidbody>().useGravity = true;
         if (GetComponent<FixedJoint>()) {
 
             GetComponent<FixedJoint>().connectedBody = null;

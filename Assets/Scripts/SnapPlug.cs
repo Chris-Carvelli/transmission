@@ -4,6 +4,7 @@ using UnityEngine;
 
 /// plug is inserted into socket
 public class SnapPlug : MonoBehaviour {
+    public GameObject sparkEffect;
     public SnapSocket nearSocket;
 
 	// set in unity editor
@@ -36,9 +37,14 @@ public class SnapPlug : MonoBehaviour {
         Transform t = InSocket.GetEndTransform();
 
         _body.MovePosition(t.position);
-        _body.MoveRotation(t.rotation);
+        Quaternion q = t.rotation;
+        q.eulerAngles = new Vector3(0, 0, 270);
+        _body.MoveRotation(q);
 
         _body.useGravity = false;
+
+        //sparking
+        Instantiate(sparkEffect).transform.position = transform.position;
     }
 
     public void UnplugginAction() {
