@@ -16,21 +16,32 @@ public class Blink : MonoBehaviour
 	public Material[] OnMaterials;
 	public Material[] OffMaterial;
 
+	public enum BlinkStatus
+	{
+		Off, Blink, On
+	}
 
-	private bool blink = true;
-	public bool IsBlinking
+	private BlinkStatus blink = BlinkStatus.Blink;
+	public BlinkStatus IsBlinking
 	{
 		get{return this.blink;}
 		set
 		{
-			this.blink = value;
-			if(!value)
+			if(this.blink != value)
 			{
-				// not blinking, set to false
-				this.IsOn = false;
-
-				// reset timer for when starting to blink again
-				this.ResetTimer();
+				this.blink = value;
+				switch(this.blink)
+				{
+					case BlinkStatus.Off:
+						this.IsOn = false;
+						break;
+					case BlinkStatus.On:
+						this.IsOn = true;
+						break;
+					case BlinkStatus.Blink:
+						this.ResetTimer();
+						break;
+				}
 			}
 		}
 	}
@@ -83,7 +94,7 @@ public class Blink : MonoBehaviour
 
 	void Update ()
 	{
-		if(this.IsBlinking)
+		if(this.IsBlinking == BlinkStatus.Blink)
 		{
 			timer += Time.deltaTime;
 			if(timer >= this.BlinkInterval)

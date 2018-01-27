@@ -30,17 +30,17 @@ public class SnapSocket : MonoBehaviour {
             if(CurrentMission == null)
             {
                 // no light
-                this.Light.IsBlinking = false;
+                this.Light.IsBlinking = Blink.BlinkStatus.Off;
             }
             else if(CurrentMission.IsInConversation)
             {
                 // light
-                this.Light.IsBlinking = true;
+                this.Light.IsBlinking = Blink.BlinkStatus.On;
             }
             else
             {
                 // blink it
-                this.Light.IsBlinking = true;
+                this.Light.IsBlinking = Blink.BlinkStatus.Blink;
             }
         }
     }
