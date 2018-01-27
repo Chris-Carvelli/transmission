@@ -4,6 +4,7 @@ using UnityEngine;
 
 /// plug is inserted into socket
 public class SnapPlug : MonoBehaviour {
+    public SnapSocket nearSocket;
 
 	// set in unity editor
 	public SnapPlug OtherSide;
@@ -36,13 +37,41 @@ public class SnapPlug : MonoBehaviour {
 
         _body.MovePosition(t.position);
         _body.MoveRotation(t.rotation);
+
+        _body.useGravity = false;
     }
 
     public void UnplugginAction() {
         Debug.Log("unplug");
         //_body.AddForce(InSocket.GetEndPosition() - transform.position);
-        Transform t = InSocket.GetStartTransform();
+        
+        if (InSocket != null) {
 
-        _body.MovePosition(t.position);
+            Transform t = InSocket.GetStartTransform();
+            InSocket.ConnectedPlug = null;
+
+            _body.MovePosition(t.position);
+        }
+        _body.useGravity = true;
+
+    }
+
+
+    private void OnTriggerEnter(Collider other) {
+        SnapSocket socket = other.gameObject.GetComponent<SnapSocket>();
+
+        if (socket == null)
+            return;
+
+        nearSocket = socket;
+    }
+
+    private void OnTriggerExit(Collider other) {
+        SnapSocket socket = other.gameObject.GetComponent<SnapSocket>();
+
+        if (socket == null)
+            return;
+
+        nearSocket = null;
     }
 }
