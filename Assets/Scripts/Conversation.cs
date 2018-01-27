@@ -9,7 +9,7 @@ public class Conversation : MonoBehaviour {
 	// public float seconds;
 	public AudioSource Talk;
 
-	private bool HasHeard = false;
+	public bool HasHeard = false;
 
 	void Start ()
 	{

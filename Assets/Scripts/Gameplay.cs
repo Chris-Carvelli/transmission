@@ -19,14 +19,39 @@ public class Gameplay : MonoBehaviour {
 		List<Conversation> conv = new List<Conversation>();
 		foreach(var c in this.Conversations)
 		{
-			conv.Add(c);
+			if(!c.HasHeard && !IsInConversation(c.FromCaller))
+			{
+				conv.Add(c);
+			}
 		}
+
+		// dont include the currently active missions
 		foreach(var m in this.missions)
 		{
 			conv.Remove(m.conversation);
 		}
 
 		return SelectRandomOrNull(conv);
+	}
+
+	private bool IsInConversation(SnapSocket socket)
+	{
+		foreach(var m in missions)
+		{
+			// a person calling, cant call again
+			if(m.conversation.FromCaller == socket)
+			{
+				return true;
+			}
+
+			if(m.conversation.ToCaller == socket &&
+				m.conversation.IsInConversation)
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	private static T SelectRandomOrNull<T>(List<T> free_sockets)
