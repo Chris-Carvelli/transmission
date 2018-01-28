@@ -15,6 +15,16 @@ public class SnapSocket : MonoBehaviour {
     // null no call, playing=solid light, non null, non playing=calling->blinking
     public Mission CurrentMission;
 
+    public Mission CurrentMissionFake {
+        get {
+            if (CurrentMission != null) return CurrentMission;
+            if (OtherSocket != null) return OtherSocket.CurrentMission;
+            return null;
+        }
+    }
+
+    public SnapSocket OtherSocket;
+
     public bool HasCallWaiting
     {
         get{

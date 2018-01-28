@@ -20,27 +20,27 @@ public class ViveInputTest : MonoBehaviour {
     void Update () {
         // 1
         if (Controller.GetAxis() != Vector2.zero) {
-            Debug.Log(gameObject.name + Controller.GetAxis());
+            // Debug.Log(gameObject.name + Controller.GetAxis());
         }
 
         // 2
         if (Controller.GetHairTriggerDown()) {
-            Debug.Log(gameObject.name + " Trigger Press");
+            // Debug.Log(gameObject.name + " Trigger Press");
         }
 
         // 3
         if (Controller.GetHairTriggerUp()) {
-            Debug.Log(gameObject.name + " Trigger Release");
+            // Debug.Log(gameObject.name + " Trigger Release");
         }
 
         // 4
         if (Controller.GetPressDown(SteamVR_Controller.ButtonMask.Grip)) {
-            Debug.Log(gameObject.name + " Grip Press");
+            // Debug.Log(gameObject.name + " Grip Press");
         }
 
         // 5
         if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.Grip)) {
-            Debug.Log(gameObject.name + " Grip Release");
+            // Debug.Log(gameObject.name + " Grip Release");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }

@@ -45,7 +45,7 @@ public class Mission
 
 	private bool listening = false;
 	private bool lastlistening = false;
-	private float listeningtimer = 0;
+	public float listeningtimer = 0;
 	public void Play()
 	{
 		listening = true;
@@ -56,7 +56,7 @@ public class Mission
 		get
 		{
 			// TODO: get actual length of sound?
-			return 10.0f;
+			return 50.0f;
 		}
 	}
 
@@ -80,8 +80,8 @@ public class Mission
 			&& fp.OtherSide == tp && tp.OtherSide == fp;
 		if(connected && !has_been_connected)
 		{
-			Debug.Log("Mission connected, timer started");
-			has_been_connected = true;
+			Debug.Log(string.Format("Mission connected, timer started {0} -- {1}.", c.FromCaller, c.ToCaller));
+            has_been_connected = true;
 
 			c.ToCaller.CurrentMission = this;
 		}
@@ -121,7 +121,7 @@ public class Mission
 
 		if(active && !connected && has_been_connected)
 		{
-			Debug.Log("Cable yanked.");
+			Debug.Log(string.Format("Cable yanked {0} -- {1}.", c.FromCaller, c.ToCaller));
 			active = false;
 		}
 		

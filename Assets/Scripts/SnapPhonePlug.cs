@@ -9,20 +9,20 @@ public class SnapPhonePlug : SnapPlug {
     public override void PlugginAction () {
         base.PlugginAction();
 
-        if (InSocket.CurrentMission == null) {
+        if (InSocket.CurrentMissionFake == null) {
             speaker.clip = whiteNoise;
             speaker.loop = true;
         }
         else {
-            if (!InSocket.CurrentMission.IsInConversation) {
-                speaker.clip = InSocket.CurrentMission.conversation.HelloOperator;
+            if (!InSocket.CurrentMissionFake.IsInConversation) {
+                speaker.clip = InSocket.CurrentMissionFake.conversation.HelloOperator;
                 speaker.loop = false;
             }
 
             else {
-                InSocket.CurrentMission.Play();
-                speaker.time = InSocket.CurrentMission.listeningtimer;
-                speaker.clip = InSocket.CurrentMission.conversation.Talk;
+                InSocket.CurrentMissionFake.Play();
+                speaker.time = InSocket.CurrentMissionFake.listeningtimer;
+                speaker.clip = InSocket.CurrentMissionFake.conversation.Talk;
                 speaker.loop = false;
                 speaker.Play();
             }
