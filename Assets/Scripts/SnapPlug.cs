@@ -31,7 +31,7 @@ public class SnapPlug : MonoBehaviour {
 	// called from snap socket
 	public void SetSocket(SnapSocket socket)
 	{
-        Debug.Log(string.Format("Connecting plug {0} to socket {1}", this, socket));
+        // Debug.Log(string.Format("Connecting plug {0} to socket {1}", this, socket));
 
 		this.InSocket = socket;
         PlugginAction();

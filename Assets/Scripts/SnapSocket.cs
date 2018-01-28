@@ -74,7 +74,7 @@ public class SnapSocket : MonoBehaviour {
 			connected_plug_ = value;
 			if(connected_plug_ != null)
 			{
-                Debug.Log(string.Format("Connected {0}", this));
+                // Debug.Log(string.Format("Connected {0}", this));
                 connected_plug_.SetSocket(this);
 			}
 		}
