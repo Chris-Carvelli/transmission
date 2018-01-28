@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
 public class ViveInputTest : MonoBehaviour {
     public ShaderSwitching camera;
     // 1
@@ -40,6 +41,7 @@ public class ViveInputTest : MonoBehaviour {
         // 5
         if (Controller.GetPressUp(SteamVR_Controller.ButtonMask.Grip)) {
             Debug.Log(gameObject.name + " Grip Release");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
