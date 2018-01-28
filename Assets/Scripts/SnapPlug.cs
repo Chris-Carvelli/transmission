@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// plug is inserted into socket
-public class SnapPlug : MonoBehaviour {
+public class SnapPlug : Grabbable {
     public GameObject sparkEffect;
     public SnapSocket nearSocket;
 
@@ -49,15 +49,20 @@ public class SnapPlug : MonoBehaviour {
         //_body.AddForce(InSocket.GetEndPosition() - transform.position);
         Transform t = InSocket.GetEndTransform();
 
-        _body.MovePosition(t.position);
         Quaternion q = t.rotation;
         q.eulerAngles = new Vector3(0, 0, 270);
         _body.MoveRotation(q);
 
+        _body.MovePosition(t.position);
+
         _body.useGravity = false;
+        _body.velocity = Vector3.zero;
+
+
 
         //sparking
         Instantiate(sparkEffect).transform.position = transform.position;
+        _body.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     public void UnplugginAction() {
@@ -72,6 +77,7 @@ public class SnapPlug : MonoBehaviour {
             _body.MovePosition(t.position);
         }
         _body.useGravity = true;
+        _body.constraints = RigidbodyConstraints.None;
 
     }
 
