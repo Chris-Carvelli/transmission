@@ -7,6 +7,9 @@ public class SnapPlug : Grabbable {
     public GameObject sparkEffect;
     public SnapSocket nearSocket;
 
+    // fake plug, should never be recognized by mission logic
+    public bool Fake  = false;
+
     public string Name
     {
         get {return gameObject.name;}
