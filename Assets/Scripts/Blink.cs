@@ -94,12 +94,11 @@ public class Blink : MonoBehaviour
 
 	void Update ()
 	{
-		if(this.IsBlinking == BlinkStatus.Blink)
-		{
-			timer += Time.deltaTime;
-			if(timer >= this.BlinkInterval)
-			{
-				timer -= this.BlinkInterval;
+		if(this.IsBlinking == BlinkStatus.Blink) {
+            timer += Time.deltaTime;
+			if(timer >= this.BlinkInterval) {
+                Debug.Log("startBlink");
+                timer -= this.BlinkInterval;
 				this.IsOn = !this.IsOn;
 			}
 		}

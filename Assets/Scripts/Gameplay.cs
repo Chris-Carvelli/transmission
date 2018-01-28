@@ -10,6 +10,11 @@ public class Gameplay : MonoBehaviour {
 
 	void Update()
 	{
+        //TEST
+        if (Input.anyKeyDown)
+            CreateNewMission();
+
+
 		List<Mission> toremove = new List<Mission>();
 		foreach(var m in missions)
 		{

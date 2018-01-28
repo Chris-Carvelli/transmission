@@ -96,18 +96,18 @@ public class GrabObject : MonoBehaviour {
 
 
     public void OnTriggerEnter(Collider other) {
-        //if (other.gameObject.GetComponent<Grabbable>())
+        if (other.gameObject.GetComponent<Grabbable>())
             SetCollidingObject(other);
     }
 
     public void OnTriggerStay(Collider other) {
-        //if (other.gameObject.GetComponent<Grabbable>())
+        if (other.gameObject.GetComponent<Grabbable>())
             SetCollidingObject(other);
     }
 
     public void OnTriggerExit(Collider other) {
-        /*if (!other.gameObject.GetComponent<Grabbable>())
-            return;*/
+        if (!other.gameObject.GetComponent<Grabbable>())
+            return;
 
         if (!collidingObject) {
             return;
