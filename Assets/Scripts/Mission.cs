@@ -44,6 +44,7 @@ public class Mission
 	}
 
 	private bool listening = false;
+	private bool lastlistening = false;
 	private float listeningtimer = 0;
 	public void Play()
 	{
@@ -103,6 +104,12 @@ public class Mission
 				Debug.Log("Timer has expired. Killing conversation.");
 				active = false;
 			}
+		}
+
+		if(lastlistening != listening)
+		{
+			Debug.Log("Listening state changed!");
+			lastlistening = listening;
 		}
 		
 		if(listening)
