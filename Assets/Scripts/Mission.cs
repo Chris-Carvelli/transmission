@@ -75,7 +75,9 @@ public class Mission
 
 		var fp = c.FromCaller.ConnectedPlug;
 		var tp = c.ToCaller.ConnectedPlug;
-		var connected = fp != null && tp != null && fp.OtherSide == tp && tp.OtherSide == fp;
+		var connected = fp != null && tp != null
+			&& !fp.Fake && !tp.Fake
+			&& fp.OtherSide == tp && tp.OtherSide == fp;
 		if(connected && !has_been_connected)
 		{
 			Debug.Log("Mission connected, timer started");
