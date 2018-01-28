@@ -49,6 +49,11 @@ public class GrabObject : MonoBehaviour {
 
         if (plug != null)
             plug.UnplugginAction();
+
+        SnapPhone phone = objectInHand.GetComponent<SnapPhone>();
+
+        if (phone != null)
+            phone.UnplugginAction();
     }
 
     private FixedJoint AddFixedJoint() {
@@ -66,6 +71,7 @@ public class GrabObject : MonoBehaviour {
             Destroy(GetComponent<FixedJoint>());
 
             SnapPlug plug = objectInHand.GetComponent<SnapPlug>();
+            SnapPhone phone = objectInHand.GetComponentInChildren<SnapPhone>();
             if (plug != null) {
                 if (plug.nearSocket != null) {
                     if (plug.nearSocket.ConnectedPlug == null) {
@@ -73,6 +79,11 @@ public class GrabObject : MonoBehaviour {
                         plug.nearSocket.SnapPlug();
 
                     }
+                }
+            }
+            else if (phone != null) {
+                if (phone.phoneBase != null) {
+                    phone.PlugginAction();
                 }
             }
             else {
@@ -85,18 +96,18 @@ public class GrabObject : MonoBehaviour {
 
 
     public void OnTriggerEnter(Collider other) {
-        if (other.gameObject.GetComponent<Grabbable>())
+        //if (other.gameObject.GetComponent<Grabbable>())
             SetCollidingObject(other);
     }
 
     public void OnTriggerStay(Collider other) {
-        if (other.gameObject.GetComponent<Grabbable>())
+        //if (other.gameObject.GetComponent<Grabbable>())
             SetCollidingObject(other);
     }
 
     public void OnTriggerExit(Collider other) {
-        if (!other.gameObject.GetComponent<Grabbable>())
-            return;
+        /*if (!other.gameObject.GetComponent<Grabbable>())
+            return;*/
 
         if (!collidingObject) {
             return;

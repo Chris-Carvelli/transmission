@@ -30,26 +30,23 @@ public class SnapPlug : Grabbable {
     private void Awake() {
         _body = GetComponent<Rigidbody>();
     }
-    
+
     public void PlugginAction() {
         Debug.Log("plug");
         //_body.AddForce(InSocket.GetEndPosition() - transform.position);
         Transform t = InSocket.GetEndTransform();
 
         Quaternion q = t.rotation;
-        q.eulerAngles = new Vector3(0, 0, 270);
+        //q.eulerAngles = new Vector3(0, 0, 270);
         _body.MoveRotation(q);
 
         _body.MovePosition(t.position);
 
         _body.useGravity = false;
-        _body.velocity = Vector3.zero;
-
 
 
         //sparking
         Instantiate(sparkEffect).transform.position = transform.position;
-        _body.constraints = RigidbodyConstraints.FreezeAll;
     }
 
     public void UnplugginAction() {
@@ -64,7 +61,6 @@ public class SnapPlug : Grabbable {
             _body.MovePosition(t.position);
         }
         _body.useGravity = true;
-        _body.constraints = RigidbodyConstraints.None;
 
     }
 

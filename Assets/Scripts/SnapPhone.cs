@@ -21,7 +21,7 @@ public class SnapPhone : Grabbable {
 
         _body.MovePosition(t.position);
         Quaternion q = t.rotation;
-        q.eulerAngles = new Vector3(0, 0, 0);
+        //q.eulerAngles = new Vector3(0, 0, 0);
         _body.MoveRotation(q);
 
         _body.useGravity = false;
