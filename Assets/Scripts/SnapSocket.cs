@@ -70,6 +70,7 @@ public class SnapSocket : MonoBehaviour {
                 Debug.Log(string.Format("Clearing {0}", this));
 				connected_plug_.SetSocket(null);
 			}
+
 			connected_plug_ = value;
 			if(connected_plug_ != null)
 			{

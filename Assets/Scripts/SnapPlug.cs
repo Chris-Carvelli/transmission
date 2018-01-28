@@ -43,7 +43,7 @@ public class SnapPlug : Grabbable {
         _body = GetComponent<Rigidbody>();
     }
 
-    public void PlugginAction() {
+    virtual public void PlugginAction() {
         if(_body == null) return;
         Debug.Log("plug");
         //_body.AddForce(InSocket.GetEndPosition() - transform.position);
@@ -56,13 +56,15 @@ public class SnapPlug : Grabbable {
         _body.MovePosition(t.position);
 
         _body.useGravity = false;
+        _body.velocity = Vector3.zero;
+        _body.angularVelocity = Vector3.zero;
 
 
         //sparking
         Instantiate(sparkEffect).transform.position = transform.position;
     }
 
-    public void UnplugginAction() {
+    virtual public void UnplugginAction() {
         Debug.Log("unplug");
         //_body.AddForce(InSocket.GetEndPosition() - transform.position);
         

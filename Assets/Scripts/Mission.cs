@@ -44,7 +44,7 @@ public class Mission
 	}
 
 	private bool listening = false;
-	private float listeningtimer = 0;
+	public float listeningtimer = 0;
 	public void Play()
 	{
 		listening = true;
@@ -55,7 +55,7 @@ public class Mission
 		get
 		{
 			// TODO: get actual length of sound?
-			return 10.0f;
+			return 30.0f;
 		}
 	}
 

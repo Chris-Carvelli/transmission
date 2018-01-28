@@ -10,8 +10,7 @@ public class Gameplay : MonoBehaviour {
 
 	void Update()
 	{
-        //TEST
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(KeyCode.Space))
             CreateNewMission();
 
 
