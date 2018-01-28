@@ -31,8 +31,23 @@ public class Mission
 			{
 				return false;
 			}
-			return conversation.Talk.isPlaying;
+			return listening && listeningtimer < conversationlength;
 		}
+	}
+
+	float conversationlength
+	{
+		get
+		{
+			return conversation.Talk.length;
+		}
+	}
+
+	private bool listening = false;
+	private float listeningtimer = 0;
+	public void Play()
+	{
+		listening = true;
 	}
 
 	float timer_length
@@ -88,6 +103,11 @@ public class Mission
 				Debug.Log("Timer has expired. Killing conversation.");
 				active = false;
 			}
+		}
+		
+		if(listening)
+		{
+			listeningtimer += dt;
 		}
 
 		if(active && !connected && has_been_connected)

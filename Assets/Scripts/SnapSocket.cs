@@ -55,7 +55,6 @@ public class SnapSocket : MonoBehaviour {
     }
 
 	// the conencted plug
-	// TODO: add some events?
 	public SnapPlug ConnectedPlug
 	{
 		get
